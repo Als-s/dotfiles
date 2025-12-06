@@ -1,0 +1,97 @@
+{
+  "$schema": "/etc/xdg/swaync/configSchema.json",
+  "positionX": "right",
+  "positionY": "top",
+  "layer": "overlay",
+  "ignore-gtk-theme": true,
+  "cssPriority": "user",
+  "layer-shell": true,
+  "control-center-layer": "top",
+  "transition-time": 200,
+  "fit-to-screen": true,
+  "keyboard-shortcuts": true,
+  "image-visibility": "when-available",
+  "notification-window-width": 350,
+  "notification-window-height": 200,
+  "hide-on-clear": true,
+  "hide-on-action": true,
+  "script-fail-notify": true,
+
+  "notification-popup": {
+    "enable": true,
+    "positionX": "right",
+    "positionY": "top",
+    "timeout": 5000
+  },
+
+  "control-center": {
+    "enable": true,
+    "width": 420
+  },
+
+  "widgets": [
+    "mpris",
+    "title",
+    "notifications",
+    "backlight",
+    "buttons-grid"
+  ],
+
+  "widget-config": {
+    "mpris": {
+      "image-size": 80,
+      "image-radius": 10
+    },
+    "title": {
+      "text": "",
+      "clear-all-button": true
+    },
+    "notifications": {
+      "show-summary": true,
+      "show-body": true,
+      "icon-size": 36,
+      "max-height": 600
+    },
+    "backlight": {
+      "label": "󰃠"
+    },
+    "buttons-grid": {
+      "actions": [
+        {
+          "label": "󰂛",
+          "command": "swaync-client -d",
+          "type": "toggle",
+          "tooltip": "DND"
+        },
+        {
+          "label": "󱩓",
+          "command": "~/.config/hypr/scripts/hyprsunset_toggle.sh",
+          "type": "toggle",
+          "tooltip": "Filtro de Luz Azul"
+        },
+        {
+          "label": "󰌾",
+          "command": "hyprlock"
+        },
+        {
+          "label": "󰹑",
+          "command": "hyprshot -m window",
+          "tooltip": "Captura de ventana"
+        },
+        {
+          "label": "󰤄",
+          "exec": "pkill -USR1 hypridle",
+          "tooltip": "Hibernar"
+        },
+        {
+          "label": "󰜉",
+          "command": "systemctl reboot"
+        },
+        {
+          "label": "󰐥",
+          "command": "systemctl poweroff"
+        }
+      ]
+    }
+  }
+}

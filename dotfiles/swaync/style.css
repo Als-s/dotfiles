@@ -1,0 +1,196 @@
+/* ==========================================================
+   SwayNC CSS Optimizado (con transparencias limpias)
+   ========================================================== */
+
+/* ── 1. Colores y Paleta ─────────────────────────────── */
+@define-color theme_fg rgba(248, 248, 252, 0.98);
+@define-color theme_fg_secondary rgba(215, 220, 225, 0.78);
+@define-color theme_bg rgba(22, 22, 28, 0.2);
+@define-color popup_bg rgba(20, 25, 25, 0.4);
+@define-color module_bg rgba(20, 20, 20, 0.35);
+@define-color module_hover_bg rgba(210, 215, 225, 0.25);
+@define-color button_bg rgba(130, 135, 145, 0.25);
+@define-color button_hover_bg rgba(150, 155, 165, 0.35);
+@define-color accent_color rgba(10, 132, 255, 0.8);
+@define-color accent_color_hover #198de5;
+@define-color border_light rgba(255, 255, 255, 0.18);
+@define-color border_medium alpha(@border_light, 0.5);
+@define-color icon_primary @theme_fg;
+@define-color icon_secondary rgba(215, 220, 225, 0.88);
+@define-color mpris_player_bg rgba(0, 0, 0, 0.5);
+
+/* ── 2. Reset Básico ────────────────────────────────── */
+* {
+  font-family: "Inter", "SF Pro Text", sans-serif;
+  font-size: 17px;
+  color: @theme_fg;
+  border: none;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  outline: none;
+}
+
+/* ── REGLA PARA ENVOLVER TEXTO (Compatibilidad) ───────── */
+.notification-body,
+.notification-title {
+    text-wrap: wrap; 
+    white-space: normal;
+}
+/* ────────────────────────────────────────────────────────── */
+
+/* ── 3. Sidebar Control-Center ─────────────────────── */
+.control-center {
+  background-color: @theme_bg; /* transparencia limpia */
+  border: 1px solid @border_medium;
+  border-radius: 18px;
+  padding: 28px;
+  min-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 30px;
+}
+
+/* ── 4. Widgets ────────────────────────────────────── */
+.widget-mpris,
+.widget-buttons-grid,
+.control-center-list > box > *:not(.widget-title) {
+  background-color: @module_bg;
+  border-radius: 16px;
+  padding: 14px;
+  border: 1px solid @border_medium;
+}
+
+/* ── 5. Botones inferiores centrados ──────────────── */
+.widget-buttons-grid > flowbox {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 8px;
+  padding: 10px 20px;
+  min-width: unset;
+  min-height: unset;
+  color: @icon_secondary;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+  background-color: rgba(20,20,20,0.45);
+  color: @icon_primary;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
+  background-color: @accent_color;
+  color: white;
+}
+.widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
+  background-color: @accent_color_hover;
+}
+
+/* ── 6. Resto de widgets y estilos ────────────────── */
+.widget-title {
+  background: transparent;
+  padding-bottom: 8px;
+}
+
+.widget-title button {
+  font-family: inherit;
+  font-size: 16px;
+  color: @theme_fg;
+  background-color: @button_bg;
+  border-radius: 10px;
+  padding: 7px 16px;
+  transition: background-color 0.15s ease;
+}
+.widget-title button:hover,
+.widget-title button:active {
+  background-color: @button_hover_bg;
+}
+
+.widget-mpris {
+  padding: 0;
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+}
+.widget-mpris .widget-mpris-player {
+  background-color: @mpris_player_bg;
+  border-radius: 12px;
+  border: 1px solid @border_medium;
+  padding: 16px;
+}
+.widget-mpris .widget-mpris-album-art {
+  background: none;
+  min-width: 60px;
+  min-height: 60px;
+  border-radius: 16px;
+  margin-right: 12px;
+}
+.widget-mpris .widget-mpris-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: @theme_fg;
+  margin-bottom: 4px;
+  background: none;
+}
+.widget-mpris .widget-mpris-subtitle {
+  font-size: 16px;
+  color: @theme_fg_secondary;
+  background: none;
+}
+.widget-mpris .widget-mpris-player button {
+  all: unset;
+  background: transparent;
+  border-radius: 50%;
+  padding: 7px;
+  color: @icon_secondary;
+  font-size: 16px;
+  min-width: 34px;
+  min-height: 34px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.widget-mpris .widget-mpris-player button:hover {
+  background-color: @button_hover_bg;
+  color: @icon_primary;
+}
+.widget-mpris .widget-mpris-player button:disabled {
+  color: alpha(@icon_secondary, 0.3);
+}
+
+/* ── 7. Notificaciones Flotantes (NEGRO SÓLIDO) ───────────── */
+.floating-notifications {
+  margin: 12px;
+  padding: 0;
+  background: transparent;
+}
+
+/* Aseguramos que la fila no se estire demasiado */
+.notification-row {
+    max-width: 350px; 
+    margin: 0;
+}
+
+/* Ajuste clave: fondo negro, altura limitada y scroll */
+.floating-notifications .notification-background {
+  background-color: #000000;      /* NEGRO SÓLIDO */
+  border: 1px solid @border_light;
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 350px;               /* ancho máximo */
+  max-height: 200px;              /* altura máxima */
+  overflow-y: auto;               /* scroll si es necesario */
+  word-wrap: break-word;
+}
+
+.floating-notifications .notification-row:hover .notification-background {
+  background-color: #000000;      /* mantiene negro al hacer hover */
+}
+

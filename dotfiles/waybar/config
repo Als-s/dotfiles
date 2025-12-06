@@ -1,0 +1,69 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "height": 32,
+    "spacing": 0,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/clock"],
+    "modules-right": [
+        "custom/cafe-mode",
+        "hyprland/language",
+        "pulseaudio",
+        "battery",
+        "tray",
+        "custom/swaync"
+    ],
+
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "format": "{icon}{name}",
+        "format-icons": {
+            "default": " ",
+            "urgent": "!",
+            "focused": "*"
+        }
+    },
+
+    "custom/clock": {
+        "format": "<span color='#252525'>[ </span>{text}<span color='#252525'> ]</span>",
+        "exec": "date +'%H:%M %A, %b %d' | awk '{print tolower($0)}'",
+        "interval": 3
+    },
+
+    "hyprland/language": {
+        "format": "<span color='#252525'>[ </span><span color='#afa193'><b>key: </b></span>{short}<span color='#252525'> / </span>",
+        "tooltip": false
+    },
+
+    "pulseaudio": {
+        "format": "<span color='#afa193'><b>vol:</b></span> {volume}%"
+    },
+    
+    "battery": {
+        "format": "<span color='#252525'> / </span><span color='#afa193'><b>bat:</b></span> {capacity}%",
+        "format-charging": "<span color='#252525'> / </span><span color='#afa193'><b>ac:</b></span> {capacity}%",
+        "tooltip": false,
+        "interval": 20
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 7,
+        "tooltip": false
+    },
+
+    "custom/swaync": {
+        "format": "󰂚",
+        "tooltip": false,
+        "on-click": "swaync-client -t"
+    },
+
+    "custom/cafe-mode": {
+        "format": "{}",
+        "exec": "~/.config/hypr/scripts/hypridle_status.sh", // Llama al script que devuelve el JSON
+        "on-click": "~/.config/hypr/scripts/hypridle_toggle.sh",
+        "interval": 1,
+        "return-type": "json", // CLAVE: Espera JSON para la clase y el ícono
+        "tooltip": true 
+    }
+}
